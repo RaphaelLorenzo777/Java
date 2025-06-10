@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Executando tarefas de validação</h1>
+    <h2>Nome do repositório*</h2>
+    <input type="text" id="nomeRepositorio" onkeyup="validar()" required >
+    <br><br>
+    <output></output>
+ 
+    <script>
+        const output = document.querySelector("output");
+        const repositóriosExistentes = ["projeto1", "projeto2", "projeto3"];
+ 
+        let chamadaAtual = 0;
+ 
+        function verificarNomeRepositorioDisponivel(nome, chamada) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+ 
+                    if(chamada !== chamadaAtual) return;
+ 
+                    if (repositóriosExistentes.includes(nome.toLowerCase())) {
+                        reject(`O "${nome}" do repositório já está em uso.`);
+                    } else {
+                        resolve("O nome do repositório está disponível.");
+                    }
+                }, 1000);
+            });
+        }
+ 
+        async function validar() {
+             
+            const minhachamada = ++chamadaAtual;
+ 
+            output.innerHTML = "";
+            const nome = document.getElementById("nomeRepositorio").value
+ 
+            if (nome.length < 3) {
+                output.innerText = "O nome do repositório deve ter pelo menos 3 caracteres.";
+                return;
+            }
+ 
+            try {
+                const resultado = await verificarNomeRepositorioDisponivel(nome, minhachamada);
+ 
+                if (minhachamada === chamadaAtual) {
+                    output.innerHTML = `${resultado}<br>`;
+                }
+ 
+            }
+            catch (error) {
+ 
+                if (minhachamada === chamadaAtual) {
+                    output.innerHTML += `Erro: ${error}<br>`;
+            }
+                   
+                }
+               
+            }
+       
+    </script>
+</body>
+</html>

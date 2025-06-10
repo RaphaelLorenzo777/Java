@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de Funções em JavaScript</title>
+</head>
+<body>
+    <h2>Exercício de Funções em JavaScript</h2>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <script>
+        function calcularArea(base, altura) {
+            return (base * altura) / 2;
+        }
+        document.querySelector("#demo1").innerHTML = "A área do triângulo é: " + calcularArea(5, 10) + " unidades quadradas.";
+   
+   
+    const  minhaFunc2 = function(a, b) {
+        return a + b;
+    };
+    document.querySelector("#demo2").innerHTML += "<br>O resultado da soma é: " + minhaFunc2(3, 7);
+
+    const minhaFunc3 = new Function("a", "b", "return a *b;");
+    document.querySelector("#demo3").innerHTML += "<br>O resultado da multiplicação é: " + minhaFunc3(4, 5);
+
+   document.querySelector("#demo4").innerHTML += "<br>O resultado da subtração é: " + (function(a, b) { return a - b; })(10, 4);
+    </script>
+   
+   
+   
+    
+
+
+
+</html>

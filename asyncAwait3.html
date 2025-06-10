@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Execução de operação em Etapas com async e Await</h1>
+    <button type="button" onclick="executarOperacao()">Exencutar Operação</button>
+    <br>
+    <output></output>
+
+    <script>
+        const output = document.querySelector('output');
+        
+        function criarTarefa(nomeTarefa, tempoTarefa){
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(`Tarefa "${nomeTarefa}" concluída!`);
+                }, tempoTarefa);
+            });
+        }
+
+        async function executarOperacao() {
+            output.innerText = "executando tarefas paralelas...";
+            const tarefas = [
+                criarTarefa('Tarefa 1º', 3000),
+                criarTarefa('Tarefa 2º', 3000),
+                criarTarefa('Tarefa 3º', 3000)
+            ];
+            const resultados = await Promise.all(tarefas);
+            output.innerHTML += '<br> Todas as tarefas foram finalizadas: <br>${resultados.join('<br>')}`';
+        }
+    
+    </script>
+</body>
+</html>

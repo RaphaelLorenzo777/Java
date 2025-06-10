@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Parâmetros</h2>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+        const minhaFunc1 = (a, b = 8) =>{
+            console.log(b);
+            return a * b;
+
+        }
+        document.querySelector("#demo1").innerHTML = "O resultado é: " + minhaFunc1( b =5, a =10);
+
+        const minhaFunc2 = (...args) => {
+            let soma = 0;
+            for(let agr of args) soma += agr;
+        }
+    </script>
+</body>
+</html>

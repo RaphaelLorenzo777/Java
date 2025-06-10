@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Execução de operação em Etapas com async e Await</h1>
+    <button type="button" onclick="executarOperacao()">Exencutar Operação</button>
+    <br>
+    <output></output>
+
+    <script>
+        const output = document.querySelector('output');
+        function esperar(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function executarOperacao() {
+            output.innerText = "etapa 1: inicializando...";
+            
+                await esperar(2000); 
+            output.innerHTML += '<br>Etapa 2: carregando dados...';
+
+               await esperar(2000); 
+            output.innerHTML += '<br>Etapa 3: processando dados...';
+
+               await esperar(2000); 
+            output.innerHTML += '<br>Etapa 4: Finalizando...';
+            
+        }
+    
+    </script>
+</body>
+</html>

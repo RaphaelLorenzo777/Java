@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Funções como objeto</h2>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <script>
+        function minhaFunc1(a, b) {
+            return a * b;
+        }
+        let texto = minhaFunc1.name
+        document.querySelector("#demo1").innerHTML = "O nome da função é: " + texto;
+
+        let minhaFunc2 = (a, b) => this;
+        document.querySelector("#demo2").innerHTML = "O valor de 'this' dentro da função é: " + minhaFunc2(5, 10);
+
+
+        const meuObjeto = {
+            nome: "Laísa",
+            sobrenome: "Roberta",
+            nomeCompleto: function() {
+                return this.nome + " " + this.sobrenome;
+            }
+
+
+        }
+        document.querySelector("#demo3").innerHTML += "<br>O nome completo é: " + meuObjeto.nomeCompleto();
+
+        function minhaFunc5(arg1, agr2) {
+            this.nome = arg1;
+            this.sobrenome = agr2;
+        }
+
+        const meuobj = new minhaFunc5("Laísa", "Roberta");
+
+        const minhaFunc6 = (a, b ) => a* b;
+
+        
+        document.querySelector("#demo4").innerHTML += "<br>O nome do objeto é: " + meuobj.nome + " " + meuobj.sobrenome;
+    </script>
+</body>
+</html>
