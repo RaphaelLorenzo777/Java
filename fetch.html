@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <h1>Fetch API</h1>
+    <script>
+       /*
+       (client) requisição => 
+                           <= resposta (server)
+       */
+
+      const
+      const requisicao = new Request('https://api.thecatapi.com/v1/images/search', {
+            method: 'GET'
+      });
+
+      fetch(requisicao).then(resposta => {
+           console.log(resposta)
+           return resposta.json();
+      })
+      .then(dados => {
+        console.log(dados[0].url);
+        imagem.src = dados[0].url;
+        imagem.width = dados[0].width;
+        imagem.height = dados[0].height;
+      })
+        
+    </script>
+</body>
+</html>
